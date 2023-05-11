@@ -1,16 +1,8 @@
 const stateDefault = {
-    studentsArr: [
-        { id: '1', name: 'Minh', phone: '0848778009', email: 'test@gmail.com' },
-        { id: '2', name: 'Linh', phone: '0848778009', email: 'test@gmail.com' },
-        { id: '3', name: 'Huy', phone: '0848778009', email: 'test@gmail.com' },
-        { id: '5', name: 'Nhân', phone: '0848778009', email: 'test@gmail.com' },
-        { id: '6', name: 'Phong', phone: '0848778009', email: 'test@gmail.com' },
-
-    ],
+    studentsArr: [],
     studentsEdit: {},
     keyWord: '',
     findStudentsArr: []
-
 }
 
 const StudentsReducer = (state = stateDefault, action) => {
