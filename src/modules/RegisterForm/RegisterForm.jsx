@@ -108,7 +108,6 @@ class RegisterForm extends Component {
             }
 
             if (isValid) {
-
                 this.props.dispatch({
                     type: 'UPDATE_STUDENT',
                     payload: this.state.values,
@@ -131,10 +130,6 @@ class RegisterForm extends Component {
                     confirmButtonText: 'OK',
                     timer: 1000
                 })
-
-
-
-
             }
             document.getElementById('add').style.display = 'block';
             document.getElementById('update').style.display = 'none';
@@ -219,7 +214,7 @@ class RegisterForm extends Component {
                                 <div className="form-group col-6">
                                     <span>Mã Sinh Viên :</span>
                                     <input
-                                        value={id}
+                                        value={id || ''}
                                         className="form-control"
                                         id='id'
                                         name='Mã Sinh Viên'
@@ -229,7 +224,7 @@ class RegisterForm extends Component {
                                 <div className="form-group col-6">
                                     <span>Họ Tên :</span>
                                     <input
-                                        value={name}
+                                        value={name || ''}
                                         className="form-control"
                                         id='name'
                                         name='Họ Tên'
@@ -241,7 +236,7 @@ class RegisterForm extends Component {
                                 <div className="form-group col-6">
                                     <span>Số Điện Thoại :</span>
                                     <input
-                                        value={phone}
+                                        value={phone || ''}
                                         className="form-control"
                                         id='phone'
                                         name='Số Điện Thoại'
@@ -251,7 +246,7 @@ class RegisterForm extends Component {
                                 <div className="form-group col-6">
                                     <span>Email :</span>
                                     <input
-                                        value={email}
+                                        value={email || ''}
                                         className="form-control"
                                         id='email'
                                         name='Email'

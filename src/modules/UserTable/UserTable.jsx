@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 
 class UserTable extends Component {
     render() {
-        const { studentsArr, findStudentsArr } = this.props;
+        const { studentsArr, findStudentsArr, keyWord } = this.props.studentsReducer;
         let showArr = [];
 
-        if (findStudentsArr.length !== 0) {
+        if (keyWord) {
             showArr = findStudentsArr
         } else {
             showArr = studentsArr
@@ -21,14 +21,24 @@ class UserTable extends Component {
             document.getElementById('id').disabled = true;
             document.getElementById('add').style.display = 'none';
             document.getElementById('update').style.display = 'block';
+            console.log(item)
         }
 
         const handleDeleteStudent = (item) => {
-            const action = {
+            this.props.dispatch({
                 type: 'DELETE_STUDENT',
                 payload: item.id
-            }
-            this.props.dispatch(action)
+            });
+
+           if(document.getElementById('id').disabled){
+
+            document.getElementById('form').reset()
+            document.getElementById('id').disabled = false;
+            document.getElementById('add').style.display = 'block';
+            document.getElementById('update').style.display = 'none';
+           }
+            
+
         }
 
         return (
@@ -79,9 +89,7 @@ class UserTable extends Component {
 
 const mapStateToProps = state => {
     return {
-        studentsArr: state.StudentsReducer.studentsArr,
-        findStudentsArr: state.StudentsReducer.findStudentsArr,
-
+        studentsReducer: state.StudentsReducer
     }
 }
 

@@ -1,5 +1,12 @@
 const stateDefault = {
-    studentsArr: [],
+    studentsArr: [
+        // { id: '1', name: 'trinh', phone: '0848778009', email: 'test@gmail.com' },
+        // { id: '2', name: 'hinh', phone: '0848778009', email: 'test@gmail.com' },
+        // { id: '3', name: 'minh', phone: '0848778009', email: 'test@gmail.com' },
+        // { id: '4', name: 'long', phone: '0848778009', email: 'test@gmail.com' },
+        // { id: '5', name: 'nhan', phone: '0848778009', email: 'test@gmail.com' },
+        // { id: '6', name: 'kim', phone: '0848778009', email: 'test@gmail.com' },
+    ],
     studentsEdit: {},
     keyWord: '',
     findStudentsArr: []
@@ -15,6 +22,7 @@ const StudentsReducer = (state = stateDefault, action) => {
         case 'DELETE_STUDENT': {
             const studentsArrUpdate = state.studentsArr.filter(sv => sv.id !== action.payload)
             state.studentsArr = studentsArrUpdate
+            state.studentsEdit = {}
 
             return { ...state }
         }
@@ -31,13 +39,15 @@ const StudentsReducer = (state = stateDefault, action) => {
                 newStudentArr[index] = action.payload
             }
             state.studentsArr = newStudentArr
+            state.studentsEdit = {}
 
 
             return { ...state }
         }
         case 'FIND_STUDENT': {
+            let filteredStudents = []
             state.keyWord = action.payload.toLowerCase();
-            const filteredStudents = state.studentsArr.filter(student => {
+            filteredStudents = state.studentsArr.filter(student => {
                 return student.name.toLowerCase().includes(state.keyWord);
             });
             state.findStudentsArr = filteredStudents
